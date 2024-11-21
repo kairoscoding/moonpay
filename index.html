@@ -36,7 +36,7 @@
 		<!-- Link in our own JavaScript -->
 		<script src="js/my-javascript.js"></script>
 		
-<script defer src="https://static.moonpay.com/web-sdk/v1/moonpay-web-sdk.min.js"></script>
+<script defer src="https://static.moonpay.com/web-sdk/v1/moonpay-web-sdk.min.js">
 const moonPay = window.MoonPayWebSdk.init;
 const widget = moonPay?.({
   flow: "buy",
@@ -48,6 +48,7 @@ const widget = moonPay?.({
   handlers: {
     async onTransactionCompleted(props) {
       console.log("onTransactionCompleted", props);
+</script>
     },
   },
 });
