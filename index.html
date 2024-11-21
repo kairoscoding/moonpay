@@ -37,20 +37,27 @@
 		<script src="js/my-javascript.js"></script>
 		
 <script defer src="https://static.moonpay.com/web-sdk/v1/moonpay-web-sdk.min.js">
-const moonPay = await loadMoonPay();
-const moonPaySdk = moonPay({
-    flow: 'buy',
-    environment: 'sandbox',
-    variant: 'overlay',
-    params: {
-      apiKey: 'pk_test_8OSDd0nHS1clpW1a6t2OXzoSJCsnqYWt',
+const moonPay = window.MoonPayWebSdk.init;
+const widget = moonPay?.({
+  flow: "buy",
+  environment: "sandbox",
+  params: {
+    apiKey: "pk_test_8OSDd0nHS1clpW1a6t2OXzoSJCsnqYWt",
       theme: 'dark',
       baseCurrencyCode: 'usd',
       baseCurrencyAmount: '100',
       defaultCurrencyCode: 'eth'
-    }
+  },
+  variant: "overlay",
+  handlers: {
+    async onTransactionCompleted(props) {
+      console.log("onTransactionCompleted", props);
+    },
+  },
 });
-	moonPaySdk.show();
+
+widget?.show();
+
 	</script>
 	</body>
 </html>
