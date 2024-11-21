@@ -35,5 +35,23 @@
 
 		<!-- Link in our own JavaScript -->
 		<script src="js/my-javascript.js"></script>
+		
+<script defer src="https://static.moonpay.com/web-sdk/v1/moonpay-web-sdk.min.js"></script>
+const moonPay = window.MoonPayWebSdk.init;
+const widget = moonPay?.({
+  flow: "buy",
+  environment: "sandbox",
+  params: {
+    apiKey: "pk_test_123",
+  },
+  variant: "overlay",
+  handlers: {
+    async onTransactionCompleted(props) {
+      console.log("onTransactionCompleted", props);
+    },
+  },
+});
+
+widget?.show();
 	</body>
 </html>
